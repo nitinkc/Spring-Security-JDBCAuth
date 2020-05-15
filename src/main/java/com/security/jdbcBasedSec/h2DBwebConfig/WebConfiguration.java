@@ -1,4 +1,4 @@
-package com.security.jdbcBasedSec.webConfig;
+package com.security.jdbcBasedSec.h2DBwebConfig;
 
 import org.h2.server.web.WebServlet;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
@@ -14,7 +14,7 @@ public class WebConfiguration {
     @Bean
     ServletRegistrationBean h2servletRegistration() {
         ServletRegistrationBean registrationBean = new ServletRegistrationBean(new WebServlet());
-        registrationBean.addUrlMappings("/console/*");
+        registrationBean.addUrlMappings("/h2-console/*");
         return registrationBean;
     }
 }

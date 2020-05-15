@@ -16,6 +16,8 @@ public class InMemorySecurityConfiguration extends WebSecurityConfigurerAdapter 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.httpBasic();
+        http.formLogin();
+        http.logout();
 
         http.authorizeRequests().antMatchers("/").permitAll().and()
                 .authorizeRequests().antMatchers("/h2-console/**").permitAll();

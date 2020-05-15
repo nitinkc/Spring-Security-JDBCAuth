@@ -18,21 +18,22 @@ public class JdbcBasedSecApplication {
 		SpringApplication.run(JdbcBasedSecApplication.class, args);
 	}
 
+	//JDBC Based Authentication mechanism
 	@Bean
-	UserDetailsManager jdbcManager(DataSource dataSource) {
+	UserDetailsManager x(DataSource dataSource) {
 		JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager();
 		jdbcUserDetailsManager.setDataSource(dataSource);
 		return jdbcUserDetailsManager;
 	}
 
 	@Bean
-	InitializingBean initializerJDBC(UserDetailsManager jdbcManager) {
+	InitializingBean initializerJDBC(UserDetailsManager x) {
 		return () -> {
 			UserDetails one = User.withDefaultPasswordEncoder().username("jdbcnitin").password("password").roles("USER").build();
-			jdbcManager.createUser(one);
+			x.createUser(one);
 
 			UserDetails two = User.withDefaultPasswordEncoder().username("jdbckumar").password("password").roles("USER").build();
-			jdbcManager.createUser(two);
+			x.createUser(two);
 		};
 	}
 }
